@@ -194,7 +194,23 @@
             color: var(--text-muted);
             font-size: 0.9rem;
         }
-    </style>
+    body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* يمكنك التحكم في حجم اللوجو من هنا */
+  height: 500px;
+  background-image: url('./logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05; /* نسبة الشفافية: 0.05 تعني شفاف جداً ورا النص */
+  z-index: -1; /* يضمن إبقاء اللوجو خلف جميع العناصر */
+  pointer-events: none;
+}
+        /style>
 </head>
 <body>
 
