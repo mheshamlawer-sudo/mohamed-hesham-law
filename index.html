@@ -3,89 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محامي - محمد هشام</title>
+    <title>محمد هشام - محامٍ ومستشار قانوني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #0b131f;
+            --card-bg: #142132;
+            --accent-gold: #c5a059;
+            --text-light: #f4f4f5;
+            --text-muted: #a1a1aa;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
 
         body {
-            background-color: #05070a;
-            color: #ffffff;
-            min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(11, 19, 31, 0.95);
+            padding: 1rem 5%;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
-        .container {
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+        .logo-container img {
+            max-height: 60px;
         }
 
-        /* اللوجو الرئيسي */
-        .main-logo {
-            width: 220px;
-            height: auto;
-            max-width: 85%;
-            object-fit: contain;
-            mix-blend-mode: screen;
-        }
-
-        /* زر التواصل عبر الواتساب */
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: #25d366;
-            color: #ffffff;
+        nav a {
+            color: var(--text-light);
             text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 50px;
+            margin-right: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #18283d 0%, var(--bg-dark) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
             font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
             font-weight: bold;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            transition: transform 0.2s ease;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn-gold:hover {
+            background-color: #d4af66;
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0.5rem auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: border-color 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .service-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            position: relative;
+            padding-right: 1.2rem;
+        }
+
+        .service-card li::before {
+            content: "•";
+            color: var(--accent-gold);
+            position: absolute;
+            right: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 5%;
+            background-color: var(--card-bg);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            max-width: 280px;
+            padding: 0.8rem;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
         }
 
-        .whatsapp-btn:active {
-            transform: scale(0.96);
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
         }
 
-        .whatsapp-icon {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- اللوجو -->
-        <img src="./logo.png" alt="محمد هشام - محامي" class="main-logo">
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <!-- استبدل logo.png برابط الشعار -->
+            <img src="logo.png" alt="محمد هشام - محامي">
+        </div>
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#services">الخدمات</a>
+            <a href="#contact">حجز استشارة</a>
+        </nav>
+    </header>
 
-        <!-- زر الواتساب -->
-        <a href="https://wa.me/201000000000" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-            <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.705 1.754zm6.097-4.901l.438.26c1.511.896 3.25 1.368 5.021 1.369 5.385 0 9.766-4.381 9.768-9.767.001-2.608-1.014-5.059-2.859-6.905-1.846-1.846-4.298-2.86-6.906-2.86-5.386 0-9.767 4.381-9.769 9.768 0 1.838.514 3.63 1.488 5.183l.286.457-1.006 3.677 3.539-.922z"/>
-            </svg>
-            تواصل عبر الواتساب
-        </a>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>الأستاذ محمد هشام</h1>
+        <p>محامٍ ومستشار قانوني — تقديم الاستشارات والحلول القانونية المتكاملة لحماية حقوقك وتأمين معاملاك التجارية والمدنية.</p>
+        <a href="#contact" class="btn-gold">احجز استشارة قانونية</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <h2 class="section-title">مجالات الاختصاص</h2>
+        <div class="services-grid">
+
+            <div class="service-card">
+                <h3>تأسيس الشركات والأعمال</h3>
+                <ul>
+                    <li>تأسيس كافة أنواع الشركات واستخراج التراخيص.</li>
+                    <li>إعداد وتنظيم الجمعيات العادية وغير العادية.</li>
+                    <li>تقديم الدعم والشراكات القانونية للشركات.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>العقود والمعاملات العقارية</h3>
+                <ul>
+                    <li>صياغة ومراجعة عقود بيع المنازل والعقارات.</li>
+                    <li>إعداد وتدقيق عقود الإيجار السكنية والتجارية.</li>
+                    <li>ضمان الشروط القانونية لحماية الأطراف.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>الأسرة والتركات</h3>
+                <ul>
+                    <li>متابعة قضايا الأحوال الشخصية والأسرة.</li>
+                    <li>حصر وإدارة وتوزيع التركات وتقسيمها.</li>
+                    <li>تصفية الأنصبة الشرعية والقانونية بين الورثة.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>الدفاع والتقاضي الجنائي</h3>
+                <ul>
+                    <li>الترافع والمتابعة في قضايا الجنايات.</li>
+                    <li>الترافع وتمثيل الموكلين في قضايا الجنح.</li>
+                    <li>إعداد المذكرات القانونية والدفوع.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">طلب استشارة قانونية</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح، وسنتم التواصل معك قريباً.');">
+            <div class="form-group">
+                <input type="text" placeholder="الاسم بالكامل" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="رقم الهاتف / الواتساب" required>
+            </div>
+            <div class="form-group">
+                <select required>
+                    <option value="" disabled selected>اختر نوع الخدمة المطلوب</option>
+                    <option value="corporate">تأسيس شركات وجلسات جمعيات</option>
+                    <option value="contracts">عقود بيع وإيجار</option>
+                    <option value="family">قضايا أسرة وتقسيم تركات</option>
+                    <option value="criminal">قضايا جنايات وجنح</option>
+                    <option value="other">استشارة أخرى</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea rows="4" placeholder="تفاصيل الاستشارة المختصرة"></textarea>
+            </div>
+            <button type="submit" class="btn-gold">إرسال الطلب</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; للأستاذ محمد هشام - محامٍ ومستشار قانوني</p>
+    </footer>
 
 </body>
 </html>
