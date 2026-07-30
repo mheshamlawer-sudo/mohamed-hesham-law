@@ -213,12 +213,18 @@
     }
         
        
-    body {
+  body {
     position: relative;
-    }
-  #preloader, .preloader, #loader, .loader {
+}
+
+div[class*="load"], div[id*="load"],
+div[class*="preloader"], div[id*="preloader"] {
     display: none !important;
-  }
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+        
         
         /style>
 </head>
