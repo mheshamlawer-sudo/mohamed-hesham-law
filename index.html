@@ -265,27 +265,27 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <h2 class="section-title">طلب استشارة قانونية</h2>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح، وسنتم التواصل معك قريباً.');">
+        <form class="contact-form" onsubmit="sendToWhatsApp(event)">
             <div class="form-group">
-                <input type="text" placeholder="الاسم بالكامل" required>
+                <input type="text" id="clientName" placeholder="الاسم بالكامل" required>
             </div>
             <div class="form-group">
-                <input type="tel" placeholder="رقم الهاتف / الواتساب" required>
+                <input type="tel" id="clientPhone" placeholder="رقم الهاتف / الواتساب" required>
             </div>
             <div class="form-group">
-                <select required>
+                <select id="serviceType" required>
                     <option value="" disabled selected>اختر نوع الخدمة المطلوب</option>
-                    <option value="corporate">تأسيس شركات وجلسات جمعيات</option>
-                    <option value="contracts">عقود بيع وإيجار</option>
-                    <option value="family">قضايا أسرة وتقسيم تركات</option>
-                    <option value="criminal">قضايا جنايات وجنح</option>
-                    <option value="other">استشارة أخرى</option>
+                    <option value="تأسيس شركات وجلسات جمعيات">تأسيس شركات وجلسات جمعيات</option>
+                    <option value="عقود بيع وإيجار">عقود بيع وإيجار</option>
+                    <option value="قضايا أسرة وتقسيم تركات">قضايا أسرة وتقسيم تركات</option>
+                    <option value="قضايا جنايات وجنح">قضايا جنايات وجنح</option>
+                    <option value="استشارة أخرى">استشارة أخرى</option>
                 </select>
             </div>
             <div class="form-group">
-                <textarea rows="4" placeholder="تفاصيل الاستشارة المختصرة"></textarea>
+                <textarea id="details" rows="4" placeholder="تفاصيل الاستشارة المختصرة"></textarea>
             </div>
-            <button type="submit" class="btn-gold">إرسال الطلب</button>
+            <button type="submit" class="btn-gold">إرسال الطلب عبر الواتساب</button>
         </form>
     </section>
 
@@ -294,5 +294,29 @@
         <p>جميع الحقوق محفوظة &copy; للأستاذ محمد هشام - محامٍ ومستشار قانوني</p>
     </footer>
 
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            // حط رقمك هنا مكان الرقم ده بالصيغة الدولية (مثال: 201012345678)
+            const myPhoneNumber = "201023738623"; 
+
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const service = document.getElementById('serviceType').value;
+            const details = document.getElementById('details').value;
+
+            const message = `طلب استشارة قانونية جديدة:%0A` +
+                            `• الاسم: ${encodeURIComponent(name)}%0A` +
+                            `• الرقم: ${encodeURIComponent(phone)}%0A` +
+                            `• الخدمة: ${encodeURIComponent(service)}%0A` +
+                            `• التفاصيل: ${encodeURIComponent(details)}`;
+
+            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
 </body>
 </html>
+
