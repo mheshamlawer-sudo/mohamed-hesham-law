@@ -200,19 +200,24 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px; /* يمكنك التحكم في حجم اللوجو من هنا */
-  height: 500px;
+  width: 80vw;
+  max-width: 350px;
+  height: 350px;
   background-image: url('./logo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.05; /* نسبة الشفافية: 0.05 تعني شفاف جداً ورا النص */
-  z-index: -1; /* يضمن إبقاء اللوجو خلف جميع العناصر */
+  opacity: 0.04;
+  z-index: -1;
   pointer-events: none;
-}
+    }
+        
+       
+        
         /style>
 </head>
-<body>
+      <body style="position: relative; z-index: 1;">
+        
 
     <!-- Header -->
     <header>
